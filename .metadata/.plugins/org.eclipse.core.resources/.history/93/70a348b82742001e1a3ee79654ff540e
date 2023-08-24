@@ -23,12 +23,6 @@ public class Curso {
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
-	public Curso(String nome, String disciplina, int duracao) {
-		super();
-		this.nome = nome;
-		this.disciplina = disciplina;
-		this.duracao = duracao;
-	}
 	
 	
 	

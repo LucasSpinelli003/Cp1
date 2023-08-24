@@ -19,7 +19,7 @@ public class Terminal {
 
 		Aluno a = new Aluno(nome,c,rm);
 		
-		System.out.println(a.notaCp(0,1,7));
+		System.out.println(a.notaCp(10,9,10));
 		System.out.println(a.notaFinal(10, 10));
 		
 	}

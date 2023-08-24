@@ -11,15 +11,14 @@ public class Terminal {
 	public static void main(String[] args) {
 		String nome = JOptionPane.showInputDialog(null, "Digite o seu nome: ");
 		String nomeCurso = JOptionPane.showInputDialog(null,"Digite o nome do seu curso: ");
-		String disciplina = JOptionPane.showInputDialog("Digite a sua disciplina");
-		int duracao = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite a duração do seu curso: "));
 		int rm = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o seu rm: "));
 		
-		Curso c = new Curso(nomeCurso,disciplina,duracao);
-
-		Aluno a = new Aluno(nome,c,rm);
+		Curso c = new Curso();
+		c.setNome(nomeCurso);
+		Curso nominho = c.getNome();
+		Aluno a = new Aluno(nome,nominho,rm);
 		
-		System.out.println(a.notaCp(0,1,7));
+		System.out.println(a.notaCp(10,9,10));
 		System.out.println(a.notaFinal(10, 10));
 		
 	}
