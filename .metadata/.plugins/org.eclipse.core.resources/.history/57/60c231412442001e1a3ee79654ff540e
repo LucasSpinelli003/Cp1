@@ -1,0 +1,27 @@
+package br.com.fiap.faculdade.view;
+
+
+
+import javax.swing.JOptionPane;
+
+import br.com.fiap.faculdade.model.Aluno;
+import br.com.fiap.faculdade.model.Curso;
+
+public class Terminal {
+	
+	public static void main(String[] args) {
+		String nome = JOptionPane.showInputDialog(null, "Digite o seu nome: ");
+		String nomeCurso = JOptionPane.showInputDialog(null,"Digite o nome do seu curso: ");
+		int rm = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o seu rm: "));
+		
+		Curso c = new Curso();
+		c.setNome(nomeCurso);;
+		
+		Alunos a = new Alunos(nome,c.getNome(),rm);
+		
+		System.out.println(a.notaCp(10,9,10));
+		System.out.println(a.notaFinal(10, 10));
+		
+	}
+
+}
