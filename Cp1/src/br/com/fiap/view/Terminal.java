@@ -2,6 +2,9 @@ package br.com.fiap.view;
 
 
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 
 import br.com.fiap.faculdade.model.*;
@@ -9,19 +12,118 @@ import br.com.fiap.faculdade.model.*;
 public class Terminal {
 	
 	public static void main(String[] args) {
-		String nome = JOptionPane.showInputDialog(null, "Digite o seu nome: ");
-		String nomeCurso = JOptionPane.showInputDialog(null,"Digite o nome do seu curso: ");
-		String disciplina = JOptionPane.showInputDialog("Digite a sua disciplina");
-		int duracao = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite a duração do seu curso: "));
-		int rm = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o seu rm: "));
-		
-		Curso c = new Curso(nomeCurso,disciplina,duracao);
+		System.out.println("---------------------------------------");
+		System.out.println("----------Faculdade dos cria-----------");
+		System.out.println("---------------------------------------");		
 
-		Aluno a = new Aluno(nome,c,rm);
 		
-		System.out.println(a.notaCp(0,1,7));
-		System.out.println(a.notaFinal(10, 10));
+		
+		
+		
+		
+		
+		Scanner leitor = new Scanner(System.in);
+
+		ArrayList<Aluno> array = new ArrayList<Aluno>();
+		
+	
+		
+		
+		int confirma = 1;
+		while (confirma != 0){
+			
+			
+			
+			
+			System.out.println("1 - Adicionar");
+			System.out.println("2 - Remover");
+			System.out.println("3 - Consultar por nome");
+			System.out.println("4 - Consultar por Index"); 
+			System.out.println("5 - Listar todos os alunos"); 
+			System.out.println("6 - Sair");
+			
+			System.out.println("Escolha uma opção: ");
+			int autenticando = leitor.nextInt();
+			
+			switch (autenticando) {
+		    case 1:
+		    	System.out.println("Digite o nome do aluno: ");
+		    	String nome = leitor.next();
+		    	
+		    	System.out.println("RM: ");
+		    	int rm = leitor.nextInt();
+		    	
+		    	System.out.println("Curso:");
+		    	String nomeCurso = leitor.next();
+		    	
+		    	System.out.println("Duração: (em anos)");
+		    	int duracao = leitor.nextInt();
+		    	
+		    	Curso c = new Curso(nomeCurso,duracao);
+		    	Aluno alunoNovo = new Aluno(nome,c,rm);
+		    	array.add(alunoNovo);
+		    	System.out.println("O aluno " + alunoNovo.getNome() + " foi adicionado.");
+		        break;
+		    case 2:
+		    	int i = 0;
+		    	for (Aluno alunos : array) {
+		    		i++;
+					System.out.println(i + " - " + alunos.getNome() + " " + alunos.getRm());
+				}
+		    	System.out.println("Digite o indentificador do aluno que deseja excluir: ");
+		    	int excluido = leitor.nextInt();
+		    	
+		    	System.out.println("O aluno " + array.get(excluido - 1).getNome() + " foi removido.");
+		    	array.remove(excluido - 1);
+		    	break;
+		    case 3:
+		    	int index = 0;
+		    	System.out.println("Digite o nome do aluno que deseja buscar: ");
+		    	String nomeAluno = leitor.next().toUpperCase();
+		    	
+		    	for (Aluno aluno : array) {
+					String nominho = aluno.getNome().toUpperCase();
+					index++;
+					if (nomeAluno.equals(nominho)) {
+						System.out.println("Aluno: " + aluno.getNome() + " |" + " RM: " + aluno.getRm() + " |" + " Curso: " + aluno.getCurso().getNome() + " |" + " Duração: " + aluno.getCurso().getDuracao() + "anos" );
+					}else {
+						System.out.println("Nenhum aluno foi encontrado na posição " + index + " com o nome " + nomeAluno);
+					}
+				}
+		    		
+		    	
+				
+		    	break;
+		    case 4:
+		    	System.out.println("Digite o index do aluno que deseja buscar: ");
+		    	int buscado = leitor.nextInt();
+		    	
+		    	System.out.println("O aluno " + array.get(buscado).getNome() + " foi encontrado");
+		    	
+		    	break;
+		    	
+		    case 5:
+		    	for (Aluno alunos : array) {
+					System.out.println("Aluno: " + alunos.getNome() + " |" + " RM: " + alunos.getRm() + " |" + " Curso: " + alunos.getCurso().getNome() + " |" + " Duração: " + alunos.getCurso().getDuracao() + "anos" );
+		    	}
+		    	break;
+		    case 6:
+		    	confirma = 0;
+		    	break;
+		}
+			if (confirma != 0) {
+				System.out.println("Se deseja sair digite \" 0 \" ");
+				confirma = leitor.nextInt();
+			}
+			
+		}
+			
+		System.out.println("\n ---- Volte sempre ----");
+}
+		
+		
+		
+		
 		
 	}
 
-}

@@ -15,9 +15,9 @@ public class Aluno {
 		if(nota1>nota2 && nota3> nota2) {
 			 notaCpGeral = (nota1+ nota3)/2;
 		}else if(nota2>nota1 && nota3>nota1) {
-			 notaCpGeral = (nota2 + nota3);
+			 notaCpGeral = (nota2 + nota3)/2;
 		}else if(nota1>nota3 && nota2>nota3) {
-			 notaCpGeral = (nota1+nota2);
+			 notaCpGeral = (nota1+nota2)/2;
 		}else if(nota1 == nota2 && nota1 == nota3) {
 			 notaCpGeral = (nota1+nota2)/2;
 		}
@@ -28,10 +28,10 @@ public class Aluno {
 		return nota = (challenge*0.2)+(global*0.6)+ (notaCpGeral*0.2);
 	}
 
-	public Aluno(String nome, Curso curso, int rm) {
+	public Aluno(String nome,Curso curso,  int rm) {
 		super();
-		this.nome = nome;
 		this.curso = curso;
+		this.nome = nome;
 		this.rm = rm;
 	}
 

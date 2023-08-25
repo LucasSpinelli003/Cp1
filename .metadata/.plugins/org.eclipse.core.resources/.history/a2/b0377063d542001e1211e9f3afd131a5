@@ -1,0 +1,84 @@
+package br.com.fiap.view;
+
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+import br.com.fiap.faculdade.model.*;
+
+public class Terminal {
+	
+	public static void main(String[] args) {
+		System.out.println("---------------------------------------");
+		System.out.println("----------Faculdade dos cria-----------");
+		System.out.println("---------------------------------------");		
+
+		
+		
+		
+		
+		
+		
+		Scanner leitor = new Scanner(System.in);
+
+		ArrayList<Aluno> array = new ArrayList<Aluno>();
+		
+	
+		
+		
+		int confirma = 0;
+		while (confirma == 0){
+			
+			
+			
+			
+			System.out.println("1 - Adicionar");
+			System.out.println("2 - Remover");
+			System.out.println("3 - Consultar por nome");
+			System.out.println("4 - Consultar por Index");
+			
+			System.out.println("Escolha uma opção: ");
+			int autenticando = leitor.nextInt();
+			
+			switch (autenticando) {
+		    case 1:
+		    	System.out.println("Digite o nome do aluno: ");
+		    	String nome = leitor.next();
+		    	
+		    	System.out.println("RM: ");
+		    	int rm = leitor.nextInt();
+		    	
+		    	System.out.println("Curso:");
+		    	String nomeCurso = leitor.next();
+		    	
+		    	System.out.println("Duração: ");
+		    	int duracao = leitor.nextInt();
+		    	
+		    	Curso c = new Curso(nomeCurso,duracao);
+		    	Aluno alunoNovo = new Aluno(nome,c,rm);
+		    	array.add(alunoNovo);
+		    	System.out.println("O aluno" + alunoNovo.getNome() + "foi adicionado.");
+		        break;
+		    case 2:
+		        break;
+		    case 3:
+		    	for (Aluno alunos : array) {
+					System.out.println(alunos.getNome() + " " + alunos.getRm());
+				}
+		    	break;
+		}
+			
+			System.out.println("Se deseja parar, digite 1");
+			confirma = leitor.nextInt();
+		}
+}
+		
+		
+		
+		
+		
+	}
+
