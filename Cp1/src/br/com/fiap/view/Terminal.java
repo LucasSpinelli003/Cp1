@@ -15,7 +15,7 @@ public class Terminal {
 		System.out.println("---------------------------------------");
 		System.out.println("----------Faculdade dos cria-----------");
 		System.out.println("---------------------------------------");		
-		
+
 		Scanner leitor = new Scanner(System.in);
 
 		ArrayList<Aluno> array = new ArrayList<Aluno>();
@@ -27,8 +27,10 @@ public class Terminal {
 			System.out.println("2 - Remover");
 			System.out.println("3 - Consultar por nome");
 			System.out.println("4 - Consultar por Index"); 
-			System.out.println("5 - Listar todos os alunos"); 
-			System.out.println("6 - Sair");
+			System.out.println("5 - Listar todos os alunos");
+			System.out.println("6 - Exibir nota Cp");
+			System.out.println("7 - Exibir nota geral");
+			System.out.println("8 - Sair");
 			
 			System.out.println("Escolha uma opção: ");
 			int autenticando = leitor.nextInt();
@@ -47,9 +49,24 @@ public class Terminal {
 		    	System.out.println("Duração: (em anos)");
 		    	int duracao = leitor.nextInt();
 		    	
+		    	System.out.println("Nota cp1: ");
+		    	double nota1 = leitor.nextDouble();
+		    	
+		    	System.out.println("Nota cp2: ");
+		    	double nota2 = leitor.nextDouble();
+		    	
+		    	System.out.println("Nota cp3: ");
+		    	double nota3 = leitor.nextDouble();
+		    	
+		    	System.out.println("Nota challenge: ");
+		    	double notaChallenge = leitor.nextDouble();
+		    	
+		    	System.out.println("Nota Global Solutions: ");
+		    	double notaGlobal = leitor.nextDouble();
+		    	
 		    	
 		    	Curso c = new Curso(nomeCurso,duracao);
-		    	Aluno alunoNovo = new Aluno(nome,c,rm);
+		    	Aluno alunoNovo = new Aluno(nome,c,rm,nota1,nota2,nota3,notaChallenge,notaGlobal);
 		    	array.add(alunoNovo);
 		    	System.out.println("O aluno " + alunoNovo.getNome() + " foi adicionado.");
 		        break;
@@ -118,6 +135,30 @@ public class Terminal {
 		    		break;
 		    	}
 		    case 6:
+		    	if(array.size()>0) {
+		    		for (Aluno aluno : array) {
+		    			double notaCp = aluno.notaCp(aluno.getNota1(),aluno.getNota2(),aluno.getNota3());
+						System.out.println("O " + aluno.getNome() + " ficom com: " + notaCp + " na média CP");
+					}
+		    		break;
+		    	}else {
+		    		System.out.println("Nenhum aluno foi adicionado ainda.");
+		    		break;
+		    	}
+		    
+		    case 7:
+		    	if(array.size()>0) {
+		    		for (Aluno aluno : array) {
+		    			double cpGeral = aluno.notaCp(aluno.getNota1(), aluno.getNota2(), aluno.getNota3());
+		    			double mediaGeral = aluno.notaFinal(aluno.getChallenge(),aluno.getGlobal(),cpGeral);
+						System.out.println("O " + aluno.getNome() + " ficom com: " + mediaGeral + " na média geral do semestre!");
+					}
+		    		break;
+		    	}else {
+		    		System.out.println("Nenhum aluno foi adicionado ainda.");
+		    		break;
+		    	}
+		    case 8:
 		    	confirma = 0;
 		    	break;
 		}
@@ -130,10 +171,5 @@ public class Terminal {
 			
 		System.out.println("\n ---- Volte sempre ----");
 }
-		
-		
-		
-		
-		
 	}
 
