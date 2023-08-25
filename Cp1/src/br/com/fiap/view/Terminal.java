@@ -15,25 +15,13 @@ public class Terminal {
 		System.out.println("---------------------------------------");
 		System.out.println("----------Faculdade dos cria-----------");
 		System.out.println("---------------------------------------");		
-
-		
-		
-		
-		
-		
 		
 		Scanner leitor = new Scanner(System.in);
 
 		ArrayList<Aluno> array = new ArrayList<Aluno>();
 		
-	
-		
-		
 		int confirma = 1;
 		while (confirma != 0){
-			
-			
-			
 			
 			System.out.println("1 - Adicionar");
 			System.out.println("2 - Remover");
@@ -59,54 +47,76 @@ public class Terminal {
 		    	System.out.println("Duração: (em anos)");
 		    	int duracao = leitor.nextInt();
 		    	
+		    	
 		    	Curso c = new Curso(nomeCurso,duracao);
 		    	Aluno alunoNovo = new Aluno(nome,c,rm);
 		    	array.add(alunoNovo);
 		    	System.out.println("O aluno " + alunoNovo.getNome() + " foi adicionado.");
 		        break;
 		    case 2:
-		    	int i = 0;
-		    	for (Aluno alunos : array) {
-		    		i++;
-					System.out.println(i + " - " + alunos.getNome() + " " + alunos.getRm());
-				}
-		    	System.out.println("Digite o indentificador do aluno que deseja excluir: ");
-		    	int excluido = leitor.nextInt();
-		    	
-		    	System.out.println("O aluno " + array.get(excluido - 1).getNome() + " foi removido.");
-		    	array.remove(excluido - 1);
-		    	break;
-		    case 3:
-		    	int index = 0;
-		    	System.out.println("Digite o nome do aluno que deseja buscar: ");
-		    	String nomeAluno = leitor.next().toUpperCase();
-		    	
-		    	for (Aluno aluno : array) {
-					String nominho = aluno.getNome().toUpperCase();
-					index++;
-					if (nomeAluno.equals(nominho)) {
-						System.out.println("Aluno: " + aluno.getNome() + " |" + " RM: " + aluno.getRm() + " |" + " Curso: " + aluno.getCurso().getNome() + " |" + " Duração: " + aluno.getCurso().getDuracao() + "anos" );
-					}else {
-						System.out.println("Nenhum aluno foi encontrado na posição " + index + " com o nome " + nomeAluno);
+		    	if(array.size() > 0) {
+			    	int i = 0;
+			    	for (Aluno alunos : array) {
+			    		i++;
+						System.out.println(i + " - " + alunos.getNome() + " " + alunos.getRm());
 					}
-				}
+			    	System.out.println("Digite o indentificador do aluno que deseja excluir: ");
+			    	int excluido = leitor.nextInt();
+			    	
+			    	System.out.println("O aluno " + array.get(excluido - 1).getNome() + " foi removido.");
+			    	array.remove(excluido - 1);
+			    	break;
+		    	}else {
+		    		System.out.println("Nenhum aluno foi adicionado para poder ser excluido.");
+		    		break;
+		    	}
+		    case 3:
+		    	if(array.size()>0) {
+			    	int index = 0;
+			    	System.out.println("Digite o nome do aluno que deseja buscar: ");
+			    	String nomeAluno = leitor.next().toUpperCase();
+			    	
+			    	for (Aluno aluno : array) {
+						String nominho = aluno.getNome().toUpperCase();
+						index++;
+						if (nomeAluno.equals(nominho)) {
+							System.out.println("Foi encontrado: ");
+							System.out.println("Aluno: " + aluno.getNome() + " |" + " RM: " + aluno.getRm() + " |" + " Curso: " + aluno.getCurso().getNome() + " |" + " Duração: " + aluno.getCurso().getDuracao() + "anos" );
+						}else {
+							System.out.println("Nenhum aluno foi encontrado na posição " + index + " com o nome " + nomeAluno);
+						}
+					}
+		    	}else {
+		    		System.out.println("Nenhum aluno foi adicionado ainda.");
+		    		break;
+		    	}
 		    		
 		    	
 				
 		    	break;
 		    case 4:
-		    	System.out.println("Digite o index do aluno que deseja buscar: ");
-		    	int buscado = leitor.nextInt();
-		    	
-		    	System.out.println("O aluno " + array.get(buscado).getNome() + " foi encontrado");
-		    	
-		    	break;
+		    	if(array.size()>0) {
+			    	System.out.println("Digite o index do aluno que deseja buscar: ");
+			    	int buscado = leitor.nextInt();
+			 
+			    	System.out.println("O aluno " + array.get(buscado).getNome() + " foi encontrado");
+			    	
+			    	break;
+		    	}else {
+		    		System.out.println("Nenhum aluno foi adicionado ainda.");
+		    		break;
+		    	}
 		    	
 		    case 5:
-		    	for (Aluno alunos : array) {
-					System.out.println("Aluno: " + alunos.getNome() + " |" + " RM: " + alunos.getRm() + " |" + " Curso: " + alunos.getCurso().getNome() + " |" + " Duração: " + alunos.getCurso().getDuracao() + "anos" );
+		    	if(array.size()>0) {
+			    	for (Aluno alunos : array) {
+						System.out.println("Aluno: " + alunos.getNome() + " |" + " RM: " + alunos.getRm() + " |" + " Curso: " + alunos.getCurso().getNome() + " |" + " Duração: " + alunos.getCurso().getDuracao() + "anos" );
+			    	}
+			    	break;
+		    	}else {
+		    		System.out.println("Nenhum aluno foi adicionado ainda.");
+		    		break;
 		    	}
-		    	break;
 		    case 6:
 		    	confirma = 0;
 		    	break;
